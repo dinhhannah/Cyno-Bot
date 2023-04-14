@@ -8,7 +8,9 @@
 
 The format to prompt @Cyno is as follows: 
 
-*[command] @Cyno*
+```
+[command] @Cyno
+```
 
 For example, *$hello @Cyno* is one way of summoning Cyno! 
 
