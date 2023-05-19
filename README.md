@@ -19,3 +19,6 @@ For example, *$hello @Cyno* is one way of summoning Cyno!
 * $hello
 * $joke
 * $explain
+
+## To Do
+* Reply as the fictional character ___ from the video game ___ to the following text: "___"
