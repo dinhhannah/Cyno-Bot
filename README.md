@@ -4,21 +4,21 @@
 
 (It’s called “*Cyno Says*” because the name *Cyno* sounds similar to the name *Simon*, which is the eponymous character of the children’s game “Simon Says.” Get it? Haha.)
 
+This bot was created using unofficial character.ai API made by kramcat
+* Character.ai --> https://beta.character.ai/
+* API for c.ai --> https://github.com/kramcat/CharacterAI
+
 ***Warning***: This code cannot run on Jupyter Notebook due to instance creation issues. The code *must* be run locally instead. 
+
+## How to talk to Cyno
 
 The format to prompt @Cyno is as follows: 
 
 ```
 [command] @Cyno
 ```
-
-For example, *$hello @Cyno* is one way of summoning Cyno! 
-
-## Commands
-
-* $hello
-* $joke
-* $explain
+For example, *$hello @Cyno* is one way of summoning Cyno!
 
 ## To Do
 * Reply as the fictional character ___ from the video game ___ to the following text: "___"
+* filter out the "@Cyno" part and put text input into the API
