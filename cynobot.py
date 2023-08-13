@@ -59,12 +59,12 @@ client_ = PyCAI(CAI_TOKEN)
 
 while True:
     mssg = input('You: ')
-    data = client_.chat.send_message(CAI_ID, message)
+    data = client_.chat.send_message(CAI_ID, mssg)
     
     mssg = data['replies'][0]['text']
     name = data['src_char']['participant']['name']
     
-    print(f"{name}:{message}")
+    print(f"{name}:{mssg}")
 
 
 # from characterai import PyAsyncCAI
