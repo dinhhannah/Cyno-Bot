@@ -9,7 +9,7 @@ DISCORD_TOKEN = "MTA5MTgyOTkzMDg4NDYxNjE5Mg.GeCk3X.9q5DNsoQ91BcsassIS8zNWo2F1Lge
 import asyncio
 import random
 
-from characterai import PyCAI
+from characterai import PyAsyncCAI
 CAI_TOKEN = "cebc0e7ca978e159dbca0c0970e40ff2cf1454c0"
 CAI_ID = "DCKUsZ-oNCKOe2nUcDIpk3hBcCNjhR1UsnoIHF-G4Nk"
 
@@ -33,20 +33,37 @@ async def on_ready():
 async def on_message(message):
     if message.author == client.user:
         return
+
     if (message.author.id != client.user.id):
+        print("generating response...")
         # async with message.channel.typing():
         #     await asyncio.sleep(1)
         # await message.channel.send(intro)
 
-        botmssg = (str(message.content))
-        await message.channel.send(botmssg)
+        mssg = (str(message.content))
 
-    # if message.content.startswith ('$joke'):
-    #     async with message.channel.typing():
-    #         await asyncio.sleep(2)
-    #     await message.channel.send(f"{random.choice(joke)}")
-    # if message.content.startswith ('$explain'):
-        #if mssg contains "i dont get it" or "why is that funny" or $explain 
-            #explain
+        CAIclient = PyAsyncCAI(CAI_TOKEN)
+        await CAIclient.start()
 
+        char = CAI_ID
+
+        chat = await CAIclient.chat.get_chat(char)
+
+        history_id = chat['external_id']
+        participants = chat['participants']
+
+        if not participants[0]['is_human']:
+            tgt = participants[0]['user']['username']
+        else:
+            tgt = participants[1]['user']['username']
+
+        data = await CAIclient.chat.send_message(
+            char, mssg, history_external_id=history_id, tgt=tgt
+        )
+
+        name = data['src_char']['participant']['name']
+        text = data['replies'][0]['text']
+
+        await message.channel.send(f"{text}")
+        
 client.run(DISCORD_TOKEN)
