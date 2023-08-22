@@ -35,34 +35,35 @@ async def on_message(message):
         return
 
     if (message.author.id != client.user.id):
-        print("generating response...")
-        async with message.channel.typing():
-        #     await asyncio.sleep(1)
-        # await message.channel.send(intro)
+        if client.user.mentioned_in(message):
+            print("generating response...")
+            async with message.channel.typing():
+            #     await asyncio.sleep(1)
+            # await message.channel.send(intro)
 
-            mssg = (str(message.content))
+                mssg = (str(message.content))
 
-            CAIclient = PyAsyncCAI(CAI_TOKEN)
-            await CAIclient.start()
+                CAIclient = PyAsyncCAI(CAI_TOKEN)
+                await CAIclient.start()
 
-            char = CAI_ID
+                char = CAI_ID
 
-            chat = await CAIclient.chat.get_chat(char)
+                chat = await CAIclient.chat.get_chat(char)
 
-            history_id = chat['external_id']
-            participants = chat['participants']
+                history_id = chat['external_id']
+                participants = chat['participants']
 
-            if not participants[0]['is_human']:
-                tgt = participants[0]['user']['username']
-            else:
-                tgt = participants[1]['user']['username']
+                if not participants[0]['is_human']:
+                    tgt = participants[0]['user']['username']
+                else:
+                    tgt = participants[1]['user']['username']
 
-            data = await CAIclient.chat.send_message(
-                char, mssg, history_external_id=history_id, tgt=tgt
-            )
+                data = await CAIclient.chat.send_message(
+                    char, mssg, history_external_id=history_id, tgt=tgt
+                )
 
-            botmssg = data['replies'][0]['text']
+                botmssg = data['replies'][0]['text']
 
-        await message.channel.send(f"{botmssg}")
+            await message.channel.send(f"{botmssg}")
         
 client.run(DISCORD_TOKEN)
