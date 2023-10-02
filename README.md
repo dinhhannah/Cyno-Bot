@@ -18,7 +18,7 @@ The format to prompt @Cyno is as follows:
 [text input] @Cyno
 ```
 
-For example, *$hello @Cyno* is one way of summoning Cyno!
+For example, *Hello @Cyno* is one way of summoning Cyno!
 
 ## To Do
 * Reply as the fictional character ___ from the video game ___ to the following text: "___"
