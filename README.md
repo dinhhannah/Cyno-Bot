@@ -21,5 +21,7 @@ The format to prompt @Cyno is as follows:
 For example, *Hello @Cyno* is one way of summoning Cyno!
 
 ## To Do
-* Reply as the fictional character ___ from the video game ___ to the following text: "___"
+
 * Filter out the "@Cyno" part and put text input into the API
+* Make the bot able to recognize when different people in the conversation talk
+* Shorten bot responses
