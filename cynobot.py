@@ -10,7 +10,7 @@ import asyncio
 import random
 
 from characterai import PyAsyncCAI
-CAI_TOKEN = "cebc0e7ca978e159dbca0c0970e40ff2cf1454c0"
+CAI_TOKEN = ""
 CAI_ID = "DCKUsZ-oNCKOe2nUcDIpk3hBcCNjhR1UsnoIHF-G4Nk"
 
 load_dotenv() #load environment variables
